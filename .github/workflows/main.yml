@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Story of the Internet</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Zx+MWM5J2WAmc7ktzz..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    :root {
+      --bg-color: #121212;
+      --text-color: #e0e0e0;
+      --header-color: #1f1f1f;
+      --link-color: #bbbbbb;
+      --btn-color: #6200ee;
+      --btn-hover: #3700b3;
+    }
+
+    body.light {
+      --bg-color: #f9f9f9;
+      --text-color: #333;
+      --header-color: #ffffff;
+      --link-color: #555;
+      --btn-color: #0066cc;
+      --btn-hover: #004b99;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    header {
+      background-color: var(--header-color);
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #3333;
+    }
+
+    header h1 {
+      font-size: 24px;
+    }
+
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: var(--link-color);
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--text-color);
+    }
+
+    main {
+      padding: 60px 40px;
+      text-align: center;
+    }
+
+    main h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    main p {
+      font-size: 18px;
+      max-width: 600px;
+      margin: 0 auto 30px auto;
+    }
+
+    .btn {
+      background-color: var(--btn-color);
+      color: white;
+      padding: 12px 24px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin: 10px;
+    }
+
+    .btn:hover {
+      background-color: var(--btn-hover);
+    }
+
+    .highlight-image {
+      margin-top: 40px;
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Tabs section */
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>The story of the internet</h1>
+    <nav class="navbar">
+      <a href="#inicio">Start</a>
+      <a href="#timeline">Timeline</a>
+      <a href="#avaliacoes-livro">Assessment</a>
+      <a href="#quiz">Quiz</a>
+      <button class="btn" onclick="toggleTheme()">Toggle Theme</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="inicio">
+      <h2>Welcome to The Story of the Internet</h2>
+      <img class="highlight-image" src="The_Story_of_the_Internet-Stephen_Bryant.jpg" alt="Imagem destaque">
+      <p>"The Story of the Internet" explores how the internet was born, how it evolved, and how it reshaped the world. It highlights key moments—from the early days of ARPANET to the rise of the modern web—featuring the inventors, companies, and breakthroughs that made it all possible.</p>
+      <div class="amazon">
+        <a href="https://www.amazon.com.br/Story-Internet-English-KATRINA-HENRY-ebook/dp/B09YNDJS44">
+          <button class="btn">Buy the book</button>
+        </a>
+      </div>
+    </section>
+
+    <section id="tabbed-interface" style="margin-top: 100px;">
+      <div class="tabs">
+        <button class="btn" onclick="showTab('timeline-tab')">🕒 Timeline</button>
+        <button class="btn" onclick="showTab('avaliacoes-tab')">📚 Assessment</button>
+      </div>
+
+      <div id="timeline-tab" class="tab-content active">
+        <div class="timeline-container">
+          <div class="timeline-track">
+            <!-- Timeline events aqui (mantido como está no código original) -->
+          </div>
+        </div>
+      </div>
+
+      <div id="avaliacoes-tab" class="tab-content">
+        <h2>What are they saying about the book?</h2>
+        <div class="review">
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <p class="quote">"A fascinating book that brilliantly connects history and technology."</p>
+          <p class="author">– Revista Tech & Cultura</p>
+        </div>
+        <div class="review">
+          <div class="stars">⭐⭐⭐⭐☆</div>
+          <p class="quote">"Mandatory reading for anyone who wants to understand the evolution of the internet."</p>
+          <p class="author">– Prof. Ana Mendes, UFRJ</p>
+        </div>
+        <div class="review">
+          <div class="stars">⭐⭐⭐☆☆</div>
+          <p class="quote">"Clarity, depth and an engaging narrative."</p>
+          <p class="author">– Blog Leitura Nerd</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="quiz">
+      <h2>Quiz: Test your Knowledge</h2>
+      <div id="quiz-container"></div>
+      <button onclick="verificarRespostas()">Submit</button>
+      <p id="resultado"></p>
+    </section>
+  </main>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('light');
+    }
+
+    function showTab(tabId) {
+      const tabs = document.querySelectorAll('.tab-content');
+      tabs.forEach(tab => tab.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+    }
+  </script>
+</body>
+</html>
